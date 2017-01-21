@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/userProfile_imageView_ProfilePicture"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_vertical" />
+
+    <!-- user info -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/material_component_bottom_sheet_edge_left_right_margins">
+
+        <TextView
+            android:id="@+id/userProfile_textView_Username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/md_black_1000"
+            android:textSize="@dimen/material_typography_button"
+            tools:text="@string/lorem_ipsum_short" />
+
+        <TextView
+            android:id="@+id/userProfile_textView_CustomString"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userProfile_textView_Username"
+            android:paddingTop="@dimen/material_drawer_item_padding"
+            android:textColor="@color/material_grey_400"
+            android:textSize="@dimen/material_typography_button"
+
+            tools:text="@string/lorem_ipsum_short" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,5 +1,7 @@
 package app.tabletplaza.tfa.factory;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 
 import app.tabletplaza.tfa.adapter.adapterObjects.Post_ObjectAdapter_Xenforo;
@@ -18,6 +20,7 @@ public class AdapterObjectFactories {
                 Post_ObjectAdapter_Xenforo postObjectAdapter_xenforo = new Post_ObjectAdapter_Xenforo();
                 postObjectAdapter_xenforo.setPostObject(object);
 
+                Logger.d(object.getName());
                 resultArr.add(postObjectAdapter_xenforo);
             }
         }

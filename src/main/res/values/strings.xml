@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TFA</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus faucibus.</string>
+    <string name="lorem_ipsum_short">Lorem ipsum dolor sit amet</string>
 </resources>

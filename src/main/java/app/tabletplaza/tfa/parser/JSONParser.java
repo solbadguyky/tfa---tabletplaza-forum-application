@@ -4,8 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 
+import java.util.List;
+
 import app.tabletplaza.tfa.objects.BaseObject;
 import app.tabletplaza.tfa.objects.PostObject_Xenforo;
+import app.tabletplaza.tfa.utilities.Tools;
 
 /**
  * Created by SolbadguyKY on 20-Jan-17.
@@ -25,8 +28,7 @@ public class JSONParser {
         switch (jsonType) {
             case POST:
                 JSONObject jsonObject = JSON.parseObject(jsonRawString);
-                // Logger.d(jsonObject);
-
+                //Logger.d(jsonObject);
                 return parseToXenforo_PostObject(jsonObject);
         }
 
@@ -49,6 +51,15 @@ public class JSONParser {
         postObject_xenforo.setName(jsonObject.getString("title"));
         postObject_xenforo.setUrl(jsonObject.getString("absolute_url"));
         postObject_xenforo.setPostDescription(jsonObject.getString("message"));
+
+        if (jsonObject.getString("z_thumb") != null) {
+            String zThumbRawString = jsonObject.getString("z_thumb");
+            List<String> urlList = Tools.extractUrls(zThumbRawString);
+
+            if (urlList.size() > 0) {
+                postObject_xenforo.setImage(urlList.get(0));
+            }
+        }
 
         return postObject_xenforo;
     }

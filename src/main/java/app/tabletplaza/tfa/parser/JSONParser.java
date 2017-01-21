@@ -51,6 +51,9 @@ public class JSONParser {
         postObject_xenforo.setName(jsonObject.getString("title"));
         postObject_xenforo.setUrl(jsonObject.getString("absolute_url"));
         postObject_xenforo.setPostDescription(jsonObject.getString("message"));
+        postObject_xenforo.setReplyCount(jsonObject.getIntValue("reply_count"));
+        postObject_xenforo.setViewCount(jsonObject.getIntValue("view_count"));
+        postObject_xenforo.setLikeCount(jsonObject.getIntValue("first_post_likes"));
 
         if (jsonObject.getString("z_thumb") != null) {
             String zThumbRawString = jsonObject.getString("z_thumb");

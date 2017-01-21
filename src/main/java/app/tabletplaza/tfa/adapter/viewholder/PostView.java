@@ -1,5 +1,7 @@
 package app.tabletplaza.tfa.adapter.viewholder;
 
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,11 +15,17 @@ import app.tabletplaza.tfa.R;
 
 public class PostView extends RecyclerView.ViewHolder {
 
+    //post detail
     public ImageView thumbnailView;
     public TextView titleView, descriptionView;
 
+    ///user
     public ImageView userAvatarView;
     public TextView usernameView, postDateView;
+
+    //interactions
+    public AppCompatButton replyView, likeView;
+    public AppCompatTextView viewCountView;
 
     public PostView(View itemView) {
         super(itemView);
@@ -29,5 +37,9 @@ public class PostView extends RecyclerView.ViewHolder {
         userAvatarView = (ImageView) itemView.findViewById(R.id.userProfile_imageView_ProfilePicture);
         usernameView = (TextView) itemView.findViewById(R.id.userProfile_textView_Username);
         postDateView = (TextView) itemView.findViewById(R.id.userProfile_textView_CustomString);
+
+        viewCountView = (AppCompatTextView) itemView.findViewById(R.id.postBottomBar_textView_ViewCount);
+        replyView = (AppCompatButton) itemView.findViewById(R.id.postBottomBar_button_Reply);
+        likeView = (AppCompatButton) itemView.findViewById(R.id.postBottomBar_button_Like);
     }
 }

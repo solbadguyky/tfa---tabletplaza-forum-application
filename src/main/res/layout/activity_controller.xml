@@ -19,5 +19,5 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:onClick="downloadTestingFile"
-        android:text="Test" />
+        android:text="Download Modul" />
 </RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/md_white_1000">
+
+    <!-- line break -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/material_grey_200" />
+
+    <!-- Post interactions -->
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/postBottomBar_textView_ViewCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingRight="@dimen/material_component_cards_action_button_row_padding"
+        tools:text="@string/lorem_ipsum_extremelyshort" />
+
+    <android.support.v7.widget.ButtonBarLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/postBottomBar_textView_ViewCount">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/postBottomBar_button_Reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/material_component_button_text_left_and_right_padding"
+            android:textColor="@color/md_blue_grey_200"
+            tools:text="@string/lorem_ipsum_extremelyshort" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/postBottomBar_button_Like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/material_component_button_text_left_and_right_padding"
+            android:textColor="@color/md_blue_grey_200"
+            tools:text="@string/lorem_ipsum_extremelyshort" />
+    </android.support.v7.widget.ButtonBarLayout>
+</RelativeLayout>

@@ -18,6 +18,7 @@ public class PostObject_Xenforo extends BaseObject {
     private String title;
     private String absolute_url;
     private String message;
+    private int view_count, reply_count, first_post_likes;
 
     ///Những tham sớ còn thiếu
     private String postThumbnail;
@@ -125,5 +126,29 @@ public class PostObject_Xenforo extends BaseObject {
 
     public void setUserId(Long userId) {
         this.user_id = userId;
+    }
+
+    public int getViewCount() {
+        return this.view_count;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.view_count = viewCount;
+    }
+
+    public int getLikeCount() {
+        return this.first_post_likes;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.first_post_likes = likeCount;
+    }
+
+    public int getReplyCount() {
+        return this.reply_count;
+    }
+
+    public void setReplyCount(int replyCount) {
+        this.reply_count = replyCount;
     }
 }

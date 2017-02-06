@@ -3,12 +3,18 @@ package app.tabletplaza.tfa.objects;
 import com.alibaba.fastjson.annotation.JSONType;
 
 /**
+ * Post Object customize lại dành riêng cho Xenforo
+ * Xenforo có 2 dạng bài viết, Post hoặc Thread
+ * Về cơ bản 2 loại này cùng là 1 bài đăng trong csdl của Xenforo, tuy nhiên Thread là 1 hình thức giản lược của post
+ * 1 Thread có thẻ chứa nhiều Post và bài post đầu tiên của Thread đó có cùng ID với nhau
+ * Vì vậy, ta sẽ dùng chung 1 object cho cả 2, đối với Thread thì sẽ giản lược lại những biến cần dùng
+ * <p>
  * Created by SolbadguyKY on 16-Jan-17.
  */
 
 @JSONType
 public class PostObject_Xenforo extends BaseObject {
-    ///xenforo parameters
+    ///xenforo_thread parameters
     private Long post_id;
     private Long thread_id;
     private Long user_id;
@@ -19,6 +25,9 @@ public class PostObject_Xenforo extends BaseObject {
     private String absolute_url;
     private String message;
     private int view_count, reply_count, first_post_likes;
+
+    ///xenforo_post parameters
+    private String message_html;
 
     ///Những tham sớ còn thiếu
     private String postThumbnail;

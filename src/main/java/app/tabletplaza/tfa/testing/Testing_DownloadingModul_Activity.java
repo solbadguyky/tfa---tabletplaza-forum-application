@@ -25,7 +25,7 @@ import app.tabletplaza.tfa.objects.PostObject_Xenforo;
 import app.tabletplaza.tfa.parser.JSONParser;
 
 
-public class TestingActivity extends AppCompatActivity {
+public class Testing_DownloadingModul_Activity extends AppCompatActivity {
 
     private RecyclerView itemsRecyclerView;
     private FastItemAdapter<Post_ObjectAdapter_Xenforo> fastAdapter;

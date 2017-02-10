@@ -2,6 +2,9 @@ package app.tabletplaza.tfa.utilities;
 
 import com.orhanobut.logger.Logger;
 
+import org.kefirsf.bb.BBProcessorFactory;
+import org.kefirsf.bb.TextProcessor;
+
 import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
@@ -79,5 +82,10 @@ public class Tools {
         }
 
         return null;
+    }
+
+    public static String prepareBBCode(String bbcodeStr) {
+        TextProcessor processor = BBProcessorFactory.getInstance().create();
+        return processor.process(bbcodeStr);
     }
 }

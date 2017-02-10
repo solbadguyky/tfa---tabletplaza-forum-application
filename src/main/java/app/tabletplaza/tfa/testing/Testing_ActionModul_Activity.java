@@ -6,12 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.orhanobut.logger.Logger;
 
 import org.json.JSONArray;
@@ -56,10 +54,11 @@ public class Testing_ActionModul_Activity extends AppCompatActivity {
 
     void initValue() {
         pagingObject = new PagingObject();
-        pagingObject.currentWebsite = "http://muabanonline.org/";
+        pagingObject.currentUrl = "http://muabanonline.org/api.php?action=getThreads&hash=" + DefaultInstances.Default_API_Key + "&node_id=78";
+        /*pagingObject.currentWebsite = "http://thegioitinhte.com/";
         pagingObject.bypassHashString = DefaultInstances.Default_API_Key;
         pagingObject.currentMethod = "getThreads";
-        pagingObject.currentPage = 0;
+        pagingObject.currentPage = 0;*/
     }
 
     void initView() {
@@ -115,13 +114,6 @@ public class Testing_ActionModul_Activity extends AppCompatActivity {
                 Logger.d("freeing");
 
                 adapter.loadMoreComplete();
-            }
-        });
-
-        itemsRecyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
-            @Override
-            public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
             }
         });
     }

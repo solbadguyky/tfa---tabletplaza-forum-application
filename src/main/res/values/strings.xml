@@ -97,4 +97,5 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="sendTo">Gửi bài đến %s</string>
+    <string name="action_moToSite">Đi đến trang gốc</string>
 </resources>

@@ -67,6 +67,8 @@ public class ThreadAdapter extends BaseQuickAdapter<ThreadObject, PostView> {
         //get the context
         context = viewHolder.itemView.getContext();
 
+        viewHolder.addOnClickListener(viewHolder.itemView.getId());
+
         //bind our data
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             viewHolder.titleView.setText(Html.fromHtml(item.getName(), FROM_HTML_SEPARATOR_LINE_BREAK_HEADING));
@@ -263,7 +265,7 @@ public class ThreadAdapter extends BaseQuickAdapter<ThreadObject, PostView> {
         final Requester requester = new Requester(context);
         String convertString = String.format("http://thegioitinhte.com/api.php?action=createThread&hash=" + DefaultInstances.Default_API_Key + "&node_id=4&title=%s&grab_as=%s&message=%s",
                 URLEncoder.encode(item.getName(), "utf-8"),
-                "1",
+                "admin",
                 URLEncoder.encode(item.getPostDescription(), "utf-8"));
 
         requester.sendPost(item.getPostDescription(), convertString, null, new Response.Listener<JSONObject>() {

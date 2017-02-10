@@ -8,6 +8,12 @@ import java.io.Serializable;
 
 public abstract class BaseObject implements Serializable {
 
+    public enum Type {
+        Post, Thread
+    }
+
+    public static final String TAG = "BaseObject";
+
     public abstract Long getId();
 
     public abstract void setId(Long id);
@@ -32,4 +38,5 @@ public abstract class BaseObject implements Serializable {
     public abstract String getUrl();
 
     public abstract void setUrl(String url);
+
 }

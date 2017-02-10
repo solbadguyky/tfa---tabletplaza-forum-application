@@ -25,9 +25,7 @@ public class ControllerActivity extends AppCompatActivity {
     }
 
     public void masterDetail(View view) {
-        Intent movingToTestingArea = new Intent(this, Testing_MasterDetail_Activity.class);
-        movingToTestingArea.putExtra(PostObject.TAG, Testing_MasterDetail_Activity.getDummyObject());
-        this.startActivity(movingToTestingArea);
+
     }
 
     public void actionModul(View view) {

@@ -26,13 +26,17 @@
                 layout="@layout/user_profile_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/material_component_bottom_sheet_edge_left_right_margins" />
+                android:layout_marginLeft="@dimen/material_component_bottom_sheet_edge_left_right_margins"
+                android:layout_marginRight="@dimen/material_component_bottom_sheet_edge_left_right_margins" />
 
             <RelativeLayout
                 android:id="@+id/postView_relativeLayout_PostDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/postView_profileView_ProfileView">
+                android:layout_below="@+id/postView_profileView_ProfileView"
+                android:layout_marginLeft="@dimen/material_component_bottom_sheet_edge_left_right_margins"
+                android:layout_marginRight="@dimen/material_component_bottom_sheet_edge_left_right_margins"
+                android:background="@color/material_grey_300">
 
                 <ImageView
                     android:id="@+id/postView_imageView_Thumbnail"
@@ -81,7 +85,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/postView_relativeLayout_PostDetail"
-                android:layout_marginTop="@dimen/material_component_bottom_sheet_edge_top_bottom_margins" />
+                android:layout_marginLeft="@dimen/material_component_bottom_sheet_edge_left_right_margins"
+                android:layout_marginRight="@dimen/material_component_bottom_sheet_edge_left_right_margins" />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

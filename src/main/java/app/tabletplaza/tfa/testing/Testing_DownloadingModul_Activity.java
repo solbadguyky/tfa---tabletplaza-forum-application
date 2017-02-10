@@ -1,5 +1,6 @@
 package app.tabletplaza.tfa.testing;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -7,10 +8,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
@@ -117,6 +120,21 @@ public class Testing_DownloadingModul_Activity extends AppCompatActivity {
                 Logger.d("freeing");
 
                 adapter.loadMoreComplete();
+            }
+        });
+
+        itemsRecyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
+            @Override
+            public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                Toast.makeText(Testing_DownloadingModul_Activity.this, "Clicked: " + position, Toast.LENGTH_SHORT).show();
+                if (adapter.getItem(position) instanceof ThreadObject) {
+                    ThreadObject threadObject = ((ThreadObject) (adapter.getItem(position)));
+                    Toast.makeText(Testing_DownloadingModul_Activity.this, threadObject.getName(), Toast.LENGTH_SHORT).show();
+                    Intent detailIntent = new Intent(Testing_DownloadingModul_Activity.this, Testing_MasterDetail_Activity.class);
+                    detailIntent.putExtra(BaseObject.TAG, threadObject);
+                    Testing_DownloadingModul_Activity.this.startActivity(detailIntent);
+
+                }
             }
         });
     }

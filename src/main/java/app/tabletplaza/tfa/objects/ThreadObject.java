@@ -33,7 +33,7 @@ public class ThreadObject extends BaseObject {
     private Long threadCreatedDate;
     private Long threadLastModified;
     private String threadUrl;
-    private String threadDescription;
+    private String threadDescription, threadContent;
     private int threadViewCount, threadReplyCount;
     private UserObject userObject;
 

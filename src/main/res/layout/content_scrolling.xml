@@ -8,9 +8,12 @@
     tools:context="app.tabletplaza.tfa.testing.Testing_MasterDetail_Activity"
     tools:showIn="@layout/activity_testing_master_detail">
 
-    <im.delight.android.webview.AdvancedWebView
-        android:id="@+id/contentScrolling_webView"
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/contentScrolling_contentView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="wrap_content"
+        android:background="@color/material_grey_50"
+        android:padding="@dimen/material_component_cards_left_and_right_padding"
+        android:textColor="@color/md_dark_background"
+        tools:text="@string/large_text" />
 </android.support.v4.widget.NestedScrollView>

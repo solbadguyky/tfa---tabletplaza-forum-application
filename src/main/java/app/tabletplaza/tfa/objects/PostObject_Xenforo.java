@@ -2,6 +2,8 @@ package app.tabletplaza.tfa.objects;
 
 import com.alibaba.fastjson.annotation.JSONType;
 
+import app.tabletplaza.tfa.utilities.Tools;
+
 /**
  * Post Object customize lại dành riêng cho Xenforo
  * Xenforo có 2 dạng bài viết, Post hoặc Thread
@@ -14,6 +16,8 @@ import com.alibaba.fastjson.annotation.JSONType;
 
 @JSONType
 public class PostObject_Xenforo extends BaseObject {
+    public static final String TAG = "PostObject_Xenforo";
+
     ///xenforo_thread parameters
     private Long post_id;
     private Long thread_id;
@@ -23,18 +27,47 @@ public class PostObject_Xenforo extends BaseObject {
     private String username;
     private String title;
     private String absolute_url;
-    private String message;
+
     private int view_count, reply_count, first_post_likes;
 
     ///xenforo_post parameters
-    private String message_html;
+    private String message;
 
     ///Những tham sớ còn thiếu
     private String postThumbnail;
     private int postViewCount;
 
+    /**
+     * Empty Constructor
+     */
     public PostObject_Xenforo() {
 
+    }
+
+    public PostObject_Xenforo(Long post_id, Long thread_id, Long user_id, Long post_date,
+                              Long last_edit_date, String username, String title, String absolute_url,
+                              String message) {
+        this.post_id = post_id;
+        this.thread_id = thread_id;
+        this.user_id = user_id;
+        this.post_date = post_date;
+        this.last_edit_date = last_edit_date;
+        this.username = username;
+        this.title = title;
+        this.absolute_url = absolute_url;
+        this.message = message;
+    }
+
+    public PostObject_Xenforo(PostObject_Xenforo postObject_xenforo) {
+        this.post_id = postObject_xenforo.getId();
+        this.thread_id = postObject_xenforo.getThreadId();
+        this.user_id = postObject_xenforo.getUserId();
+        this.post_date = postObject_xenforo.getCreatedDate();
+        this.last_edit_date = postObject_xenforo.getLastModified();
+        this.username = postObject_xenforo.getUsername();
+        this.title = postObject_xenforo.getName();
+        this.absolute_url = postObject_xenforo.getUrl();
+        this.message = postObject_xenforo.getPostDescription();
     }
 
     @Override
@@ -87,6 +120,10 @@ public class PostObject_Xenforo extends BaseObject {
 
     @Override
     public String getImage() {
+        ///double check
+        if (this.postThumbnail == null) {
+            return "";
+        }
         return this.postThumbnail;
     }
 
@@ -159,5 +196,9 @@ public class PostObject_Xenforo extends BaseObject {
 
     public void setReplyCount(int replyCount) {
         this.reply_count = replyCount;
+    }
+
+    public String getSeriesNumber() {
+        return Tools.md5(TAG + ">thread|" + getThreadId() + "/id" + getThreadId());
     }
 }

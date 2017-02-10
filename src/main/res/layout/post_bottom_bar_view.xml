@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -15,12 +16,16 @@
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/postBottomBar_textView_ViewCount"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/material_component_cards_action_button_row_padding"
         android:paddingRight="@dimen/material_component_cards_action_button_row_padding"
         tools:text="@string/lorem_ipsum_extremelyshort" />
 
     <android.support.v7.widget.ButtonBarLayout
+        android:id="@+id/postBottomBar_bottomBarLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -29,19 +34,31 @@
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/postBottomBar_button_Reply"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="?actionBarSize"
             android:background="@android:color/transparent"
             android:padding="@dimen/material_component_button_text_left_and_right_padding"
             android:textColor="@color/md_blue_grey_200"
-            tools:text="@string/lorem_ipsum_extremelyshort" />
+            tools:text="reply" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/postBottomBar_button_Like"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="?actionBarSize"
             android:background="@android:color/transparent"
             android:padding="@dimen/material_component_button_text_left_and_right_padding"
             android:textColor="@color/md_blue_grey_200"
-            tools:text="@string/lorem_ipsum_extremelyshort" />
+            tools:text="like" />
+
+        <com.nightonke.boommenu.BoomMenuButton
+            android:id="@+id/postBottomBar_boomMenuButton"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:bmb_buttonEnum="ham"
+            app:bmb_buttonPlaceEnum="buttonPlace_ham_2 "
+            app:bmb_inList="true"
+            app:bmb_piecePlaceEnum="piecePlace_ham_2" />
+
     </android.support.v7.widget.ButtonBarLayout>
+
+
 </RelativeLayout>

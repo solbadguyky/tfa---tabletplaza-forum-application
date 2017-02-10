@@ -5,8 +5,6 @@ import android.os.Build;
 import android.text.Html;
 import android.widget.ImageView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
@@ -14,7 +12,6 @@ import com.bumptech.glide.request.target.Target;
 import com.mikepenz.fastadapter.items.AbstractItem;
 import com.orhanobut.logger.Logger;
 
-import org.json.JSONObject;
 import org.ocpsoft.prettytime.PrettyTime;
 
 import java.util.Calendar;
@@ -23,9 +20,7 @@ import java.util.Locale;
 
 import app.tabletplaza.tfa.R;
 import app.tabletplaza.tfa.adapter.viewholder.PostView;
-import app.tabletplaza.tfa.instances.DefaultInstances;
-import app.tabletplaza.tfa.networkHelper.Downloader;
-import app.tabletplaza.tfa.objects.PostObject_Xenforo;
+import app.tabletplaza.tfa.objects.ThreadObject;
 import jp.wasabeef.glide.transformations.CropTransformation;
 
 import static android.text.Html.FROM_HTML_SEPARATOR_LINE_BREAK_HEADING;
@@ -34,9 +29,9 @@ import static android.text.Html.FROM_HTML_SEPARATOR_LINE_BREAK_HEADING;
  * Created by SolbadguyKY on 21-Jan-17.
  */
 
-public class Post_ObjectAdapter_Xenforo extends AbstractItem<Post_ObjectAdapter_Xenforo, PostView> {
+public class ThreadAdapter_FastAdapter extends AbstractItem<ThreadAdapter_FastAdapter, PostView> {
 
-    private PostObject_Xenforo postObject;
+    private ThreadObject objects;
 
     //The unique ID for this type of item
     @Override
@@ -53,6 +48,7 @@ public class Post_ObjectAdapter_Xenforo extends AbstractItem<Post_ObjectAdapter_
     //The logic to bind your data to the view
     @Override
     public void bindView(final PostView viewHolder, List<Object> payloads) {
+        Logger.i("BindView");
         //call super so the selection is already handled for you
         super.bindView(viewHolder, payloads);
         //get the context
@@ -60,16 +56,16 @@ public class Post_ObjectAdapter_Xenforo extends AbstractItem<Post_ObjectAdapter_
 
         //bind our data
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            viewHolder.titleView.setText(Html.fromHtml(postObject.getName(), FROM_HTML_SEPARATOR_LINE_BREAK_HEADING));
+            viewHolder.titleView.setText(Html.fromHtml(objects.getName(), FROM_HTML_SEPARATOR_LINE_BREAK_HEADING));
         } else {
-            viewHolder.titleView.setText(Html.fromHtml(postObject.getName()));
+            viewHolder.titleView.setText(Html.fromHtml(objects.getName()));
         }
 
-        viewHolder.descriptionView.setText(postObject.getUrl());
-        viewHolder.usernameView.setText(postObject.getUsername());
-        viewHolder.viewCountView.setText(postObject.getViewCount() + " luot xem");
-        viewHolder.replyView.setText("" + postObject.getReplyCount() + " comment");
-        viewHolder.likeView.setText("" + postObject.getLikeCount() + " like");
+        viewHolder.descriptionView.setText(objects.getUrl());
+        /*viewHolder.usernameView.setText(objects.getUsername());
+        viewHolder.viewCountView.setText(objects.getViewCount() + " luot xem");
+        viewHolder.replyView.setText("" + objects.getReplyCount() + " comment");
+        viewHolder.likeView.setText("" + objects.getLikeCount() + " like");*/
 
         PrettyTime prettyTime = new PrettyTime();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -77,13 +73,13 @@ public class Post_ObjectAdapter_Xenforo extends AbstractItem<Post_ObjectAdapter_
             viewHolder.replyView.setSupportAllCaps(true);
         }
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(postObject.getCreatedDate() * 1000);
+        calendar.setTimeInMillis(objects.getCreatedDate() * 1000);
         viewHolder.postDateView.setText(prettyTime.format(calendar.getTime()));
 
-        if (postObject.getImage() != null && !postObject.getImage().isEmpty()) {
-            //GlideUtilities.loadImageToImageView(ctx,postObject.getImage(),viewHolder.thumbnailView);
+        if (objects.getImage() != null && !objects.getImage().isEmpty()) {
+            //GlideUtilities.loadImageToImageView(ctx,objects.getImage(),viewHolder.thumbnailView);
             Glide.with(ctx)
-                    .load(postObject.getImage())
+                    .load(objects.getImage())
                     .bitmapTransform(new CropTransformation(ctx, viewHolder.thumbnailView.getWidth(),
                             viewHolder.thumbnailView.getHeight(), CropTransformation.CropType.TOP)
                     )
@@ -106,14 +102,14 @@ public class Post_ObjectAdapter_Xenforo extends AbstractItem<Post_ObjectAdapter_
             Logger.d("CheckImage Tag");
 
             ///Nếu chưa có ảnh thì sẽ get ảnh từ downloader
-            String downloadExactlyThreadUrl = String.format("http://muabanonline.org/api.php?action=getThread&hash=" + DefaultInstances.Default_API_Key + "&value=%d", postObject.getId());
+            String downloadExactlyThreadUrl = String.format("http://muabanonline.org/api.php?action=getThread&hash=***&value=%d", objects.getId());
             String jsonTag = "postThumbnail";
-            Downloader.downloadMissingData(ctx, postObject.getSeriesNumber(), jsonTag, downloadExactlyThreadUrl, new RequestQueue.RequestFinishedListener<JSONObject>() {
+            /*Downloader.downloadMissingData(ctx, objects.getSeriesNumber(), jsonTag, downloadExactlyThreadUrl, new RequestQueue.RequestFinishedListener<JSONObject>() {
                 @Override
                 public void onRequestFinished(Request<JSONObject> request) {
 
                 }
-            });
+            });*/
         }
     }
 
@@ -127,7 +123,7 @@ public class Post_ObjectAdapter_Xenforo extends AbstractItem<Post_ObjectAdapter_
 
     }
 
-    public void setPostObject(PostObject_Xenforo postObject) {
-        this.postObject = postObject;
+    public void setObjects(ThreadObject objects) {
+        this.objects = objects;
     }
 }

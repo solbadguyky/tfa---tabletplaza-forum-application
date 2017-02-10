@@ -1,11 +1,11 @@
 package app.tabletplaza.tfa.factory;
 
-import com.orhanobut.logger.Logger;
-
 import java.util.ArrayList;
 
 import app.tabletplaza.tfa.adapter.adapterObjects.Post_ObjectAdapter_Xenforo;
+import app.tabletplaza.tfa.adapter.adapterObjects.ThreadAdapter_FastAdapter;
 import app.tabletplaza.tfa.objects.PostObject_Xenforo;
+import app.tabletplaza.tfa.objects.ThreadObject;
 
 /**
  * Created by SolbadguyKY on 21-Jan-17.
@@ -20,7 +20,7 @@ public class AdapterObjectFactories {
                 Post_ObjectAdapter_Xenforo postObjectAdapter_xenforo = new Post_ObjectAdapter_Xenforo();
                 postObjectAdapter_xenforo.setPostObject(object);
 
-                Logger.d(object.getName());
+                //Logger.d(object.getName());
                 resultArr.add(postObjectAdapter_xenforo);
             }
         }
@@ -28,4 +28,18 @@ public class AdapterObjectFactories {
         return resultArr;
     }
 
+    public static ArrayList<ThreadAdapter_FastAdapter> convertThreadObjectsToAdapter(ArrayList<ThreadObject> objects) {
+        ArrayList<ThreadAdapter_FastAdapter> resultArr = new ArrayList<>();
+        if (objects != null && objects.size() > 0) {
+            for (ThreadObject object : objects) {
+                ThreadAdapter_FastAdapter objectAdapter = new ThreadAdapter_FastAdapter();
+                objectAdapter.setObjects(object);
+
+                //Logger.d(object.getName());
+                resultArr.add(objectAdapter);
+            }
+        }
+
+        return resultArr;
+    }
 }

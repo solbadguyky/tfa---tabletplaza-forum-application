@@ -1,19 +1,23 @@
 package app.tabletplaza.tfa.adapter.viewholder;
 
+import android.content.Context;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.nightonke.boommenu.BoomMenuButton;
+
 import app.tabletplaza.tfa.R;
+import app.tabletplaza.tfa.utilities.Devices;
 
 /**
  * Created by SolbadguyKY on 21-Jan-17.
  */
 
-public class PostView extends RecyclerView.ViewHolder {
+public class PostView extends BaseViewHolder {
 
     //post detail
     public ImageView thumbnailView;
@@ -26,6 +30,9 @@ public class PostView extends RecyclerView.ViewHolder {
     //interactions
     public AppCompatButton replyView, likeView;
     public AppCompatTextView viewCountView;
+
+    ///BoombuttonMenu
+    public BoomMenuButton actionButtonView;
 
     public PostView(View itemView) {
         super(itemView);
@@ -41,5 +48,14 @@ public class PostView extends RecyclerView.ViewHolder {
         viewCountView = (AppCompatTextView) itemView.findViewById(R.id.postBottomBar_textView_ViewCount);
         replyView = (AppCompatButton) itemView.findViewById(R.id.postBottomBar_button_Reply);
         likeView = (AppCompatButton) itemView.findViewById(R.id.postBottomBar_button_Like);
+
+        actionButtonView = (BoomMenuButton) itemView.findViewById(R.id.postBottomBar_boomMenuButton);
+
+        //setupView(itemView.getContext());
+    }
+
+    private void setupView(Context context) {
+        thumbnailView.setMaxHeight(Devices.getDefaultDevice(context).getSize(false) / 3);
+        thumbnailView.setMinimumHeight(Devices.getDefaultDevice(context).getSize(false) / 4);
     }
 }

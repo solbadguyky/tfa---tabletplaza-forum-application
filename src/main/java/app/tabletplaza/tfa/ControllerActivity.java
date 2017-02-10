@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import app.tabletplaza.tfa.objects.PostObject;
+import app.tabletplaza.tfa.testing.Testing_ActionModul_Activity;
 import app.tabletplaza.tfa.testing.Testing_DownloadingModul_Activity;
 import app.tabletplaza.tfa.testing.Testing_MasterDetail_Activity;
 
@@ -24,6 +26,12 @@ public class ControllerActivity extends AppCompatActivity {
 
     public void masterDetail(View view) {
         Intent movingToTestingArea = new Intent(this, Testing_MasterDetail_Activity.class);
+        movingToTestingArea.putExtra(PostObject.TAG, Testing_MasterDetail_Activity.getDummyObject());
+        this.startActivity(movingToTestingArea);
+    }
+
+    public void actionModul(View view) {
+        Intent movingToTestingArea = new Intent(this, Testing_ActionModul_Activity.class);
         this.startActivity(movingToTestingArea);
     }
 }

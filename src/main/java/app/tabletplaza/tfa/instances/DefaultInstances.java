@@ -5,5 +5,5 @@ package app.tabletplaza.tfa.instances;
  */
 
 public class DefaultInstances {
-    public static final String Default_API_Key = "***";
+    public static final String Default_API_Key = "**";
 }
